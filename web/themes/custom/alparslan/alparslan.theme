@@ -6,12 +6,6 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Serialization\Yaml;
-use Drupal\Component\Serialization\Exception\InvalidDataTypeException;
-use Drupal\Core\Asset\Exception\InvalidLibraryFileException;
-use Drupal\block_content\BlockContentInterface;
-use Drupal\node\NodeInterface;
-use Drupal\block\Entity\Block;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -20,7 +14,7 @@ use Drupal\block\Entity\Block;
  *
  * Example on how to alter theme settings form
  */
-function alparslan_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+function bootstrap_barrio_subtheme_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
   $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = [
     'bg-primary' => t('Primary'),
     'bg-secondary' => t('Secondary'),

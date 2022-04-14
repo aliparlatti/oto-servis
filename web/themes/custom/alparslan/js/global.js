@@ -7,7 +7,7 @@
 
   'use strict';
 
-  Drupal.behaviors.alparslan = {
+  Drupal.behaviors.bootstrap_barrio_subtheme = {
     attach: function (context, settings) {
 
     }

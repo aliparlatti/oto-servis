@@ -1,0 +1,70 @@
+{{ attach_library('alparslan/bs.navbar') }}
+{{ attach_library('alparslan/header') }}
+<button class="d-lg-none navbar-toggler position-absolute row cf three col" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
+	<span class="row cf">
+		<span class="three col">
+			<span class="hamburger" id="hamburger-icon">
+				<span class="line"></span>
+				<span class="line"></span>
+				<span class="line"></span>
+			</span>
+		</span>
+	</span>
+</button>
+<div class="mx-auto d-lg-none">
+	<a href="{{ url('<front>') }}" rel="home">
+		{{ drupal_entity('block', 'alparslan_branding', check_access=false) }}
+	</a>
+</div>
+<div class="offcanvas offcanvas-start" id="offcanvas">
+	{% import _self as menus %}
+	{{ menus.menu_links(items, attributes, 0) }}
+	{% macro menu_links(items, attributes, menu_level) %}
+		{% set items_length = (items|length)/2 %}
+		{% set logo_line = items_length|round %}
+		{% set logo_count = logo_line|number_format(0, '.', ',') %}
+		{% import _self as menus %}
+		{% if items %}
+			{% if menu_level == 0 %}
+
+				<div class="offcanvas-body justify-content-center">
+					<ul{{attributes.addClass('nav').addClass('navbar-nav justify-content-lg align-items-center')}}>
+					{% else %}
+						<ul{{attributes.removeClass('nav').removeClass('navbar-nav').addClass('dropdown-menu')}}>
+						{% endif %}
+						{% for item in items %}
+							{% if loop.index == logo_count +1 %}
+								<li class="d-none d-lg-block">
+									<a href="{{ url('<front>') }}" rel="home">
+										{{ drupal_entity('block', 'alparslan_branding', check_access=false) }}
+									</a>
+								</li>
+								<li class="nav-item py-2 {{ item.below ? ' dropdown'}}">
+									{{ link(item.title, item.url, { 'class':[ 'nav-link px-2', item.below ? 'dropdown-toggle' ], 'role': ['button'], 'aria-expanded': ['false'] }) }}
+								{% else %}
+									{% if menu_level == 0 %}
+										<li class="nav-item py-2 {{ item.below ? ' dropdown'}}">
+											{{ link(item.title, item.url, { 'class':[ 'nav-link px-2', item.below ? 'dropdown-toggle' ], 'role': ['button'], 'aria-expanded': ['false'] }) }}
+										{% else %}
+											<li>
+												{{ link(item.title, item.url, { 'class':[ 'dropdown-item' ]}) }}
+											</li>
+										{% endif %}
+
+									{% endif %}
+
+									{% if item.below %}
+										{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+									{% endif %}
+									{% if menu_level == 0 %}
+									</li>
+								{% endif %}
+							{% endfor %}
+							<li class="nav-item py-2">
+								{{ drupal_entity('block', 'headersocialmedia', check_access=false) }}
+							</li>
+						</ul>
+					</div>
+				{% endif %}
+			{% endmacro %}
+		</div>

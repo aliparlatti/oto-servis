@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "AvenirNext";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Kapra Neue";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Avenir Bold";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-DemiBold.woff) format("woff");
+}
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  list-style: none;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+  padding-left: 0.5rem;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  float: left;
+  padding-right: 0.5rem;
+  color: #6c757d;
+  content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
+}
+.breadcrumb-item.active {
+  color: #6c757d;
+}
+
+/*# sourceMappingURL=breadcrumb.css.map */

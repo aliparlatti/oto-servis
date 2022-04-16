@@ -1,0 +1,16 @@
+splide:
+  version: 0.1
+  css:
+    component:
+      components/_global/splide/css/splide.min.css: {}
+  js:
+      components/_global/splide/js/splide.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - alparslan/bs.transitions
+    - alparslan/bs.js.data
+    - alparslan/bs.js.event-handler
+    - alparslan/bs.js.manipulator
+    - alparslan/bs.js.selector-engine
+    - alparslan/bs.js.base-component

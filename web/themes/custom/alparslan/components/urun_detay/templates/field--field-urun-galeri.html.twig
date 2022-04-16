@@ -1,0 +1,40 @@
+{{ attach_library('alparslan/urun_detay') }}
+{{ attach_library('alparslan/bs.buttons') }}
+
+{%
+  set title_classes = [
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+{% if label_hidden %}
+	{% if multiple %}
+		<div{{attributes}}>
+			<div id="splide2" class="splide">
+				<div class="splide__track">
+					<ul class="splide__list">
+						{% for item in items %}
+							<li class="splide__slide splide_list d-flex justify-content-center">{{ item.content }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		{% for item in items %}
+			<div{{attributes}}>{{ item.content }}</div>
+		{% endfor %}
+	{% endif %}
+{% else %}
+	<div{{attributes}}>
+		{% if multiple %}
+			<div>
+			{% endif %}
+			{% for item in items %}
+				<div{{item.attributes}}>{{ item.content }}</div>
+			{% endfor %}
+			{% if multiple %}
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

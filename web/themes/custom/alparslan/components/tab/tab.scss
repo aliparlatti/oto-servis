@@ -1,0 +1,35 @@
+// global Bootstrap variables loading
+@import "../../../../../libraries/twbs/scss/functions";
+@import "../_global/global";
+@import "../../../../../libraries/twbs/scss/vendor/rfs";
+@import "../../../../../libraries/twbs/scss/mixins/border-radius";
+@import "../../../../../libraries/twbs/scss/mixins/transition";
+@import "../../../../../libraries/twbs/scss/mixins/gradients";
+@import "../../../../../libraries/twbs/scss/nav";
+
+.nav-tabs{
+     .nav-link{
+          color: $nav-link-color-custom;
+          font-family: $font-family-nav;
+          font-weight:$nav-tab-font-weight;
+          margin: 0 0;
+          @include font-size($nav-tab-font-size);
+          font-weight: $nav-link-font-weight;
+          text-decoration: if($link-decoration == none, null, none);
+          @include transition($nav-link-transition);
+          &:hover,
+          &:focus {
+            background-color: #eee;
+            color: $nav-link-hover-color-custom;
+            text-decoration: if($link-hover-decoration == underline, none, null);
+          }
+          &.disabled {
+            color: $nav-link-disabled-color;
+            pointer-events: none;
+            cursor: default;
+          } 
+     }
+}
+.tab-pane{
+  margin-top:20px;
+}

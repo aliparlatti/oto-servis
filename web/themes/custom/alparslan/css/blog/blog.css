@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "AvenirNext";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Kapra Neue";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Avenir Bold";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-DemiBold.woff) format("woff");
+}
+.blog-text h4,
+.blog-text-r h4 {
+  line-height: 1;
+}
+.blog-text h4 a,
+.blog-text-r h4 a {
+  color: #393d40;
+  font-family: "AvenirNext", Arial, sans-serif;
+  font-weight: 600;
+}
+.blog-text .blog-link,
+.blog-text-r .blog-link {
+  color: #0077af;
+  font-family: "AvenirNext", Arial, sans-serif;
+  font-size: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .blog-text-r {
+    margin-top: 20px;
+  }
+}
+.alparslan-blog-list img:hover {
+  opacity: 0.6;
+}
+.alparslan-blog-list .blog-list-link {
+  font-family: "Kapra Neue", Fallback, sans-serif;
+}
+
+.btn-blog {
+  margin-top: 2em;
+  font-family: "AvenirNext", Fallback, sans-serif;
+}
+
+.blog img:hover {
+  opacity: 0.6;
+}
+
+.title-yazar {
+  font-size: 2rem;
+}
+.title-yazar:first-child div {
+  float: left;
+}
+
+.blog-content p {
+  font-family: "AvenirNext", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.hero-image {
+  background-position: center;
+  min-height: 33.33vh;
+}
+
+/*# sourceMappingURL=blog.css.map */

@@ -1,0 +1,42 @@
+alparslan.extra_small:
+  label: alparslan_extra_small
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+  group: alparslan.bootstrap
+alparslan.alparslan_small:
+  label: alparslan_small
+  mediaQuery: '(min-width: 576px)'
+  weight: 1
+  multipliers:
+    - 1x
+  group: alparslan.bootstrap
+alparslan.alparslan_medium:
+  label: alparslan_medium
+  mediaQuery: '(min-width: 768px)'
+  weight: 1
+  multipliers:
+    - 1x
+  group: alparslan.bootstrap
+alparslan.alparslan_large:
+  label: alparslan_large
+  mediaQuery: '(min-width: 992px)'
+  weight: 1
+  multipliers:
+    - 1x
+  group: alparslan.bootstrap
+alparslan.alparslan_extra_large:
+  label: alparslan_extra_large
+  mediaQuery: '(min-width: 1200px)'
+  weight: 1
+  multipliers:
+    - 1x
+  group: alparslan.bootstrap
+alparslan.alparslan_extra_xlarge:
+  label: alparslan_extra_xlarge
+  mediaQuery: '(min-width: 1400px)'
+  weight: 1
+  multipliers:
+    - 1x
+  group: alparslan.bootstrap

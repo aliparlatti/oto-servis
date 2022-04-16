@@ -1,0 +1,22 @@
+{% set id = element['#items'].getEntity().id() %}
+
+<div class="accordion" id="collapse-{{ id }}">
+
+  {% for key,row in items %}
+ 
+   <div class="accordion-item">
+    <h2 class="accordion-header" id="heading-{{ id }}-{{ key }}">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ id }}-{{ key }}" aria-expanded="false" aria-controls="collapse-{{ id }}-{{ key }}">
+        {{ row.content['#paragraph'].field_prg_collapse_content_title.0.value }}
+      </button>
+    </h2>
+    <div id="collapse-{{ id }}-{{ key }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ id }}-{{ key }}" data-bs-parent="#collapse-{{ id }}">
+      <div class="accordion-body">
+         {{ row.content }}
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>

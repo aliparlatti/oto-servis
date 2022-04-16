@@ -1,0 +1,13 @@
+popup:
+  version: 0.1
+  css:
+    component:
+      css/popup/popup.css: {}
+  js:
+    /libraries/twbs/js/dist/modal.js: {minified: true}
+    components/popup/popup.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.cookie
+    - core/jquery.once
+    - core/drupalSettings

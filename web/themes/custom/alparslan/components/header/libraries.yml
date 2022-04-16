@@ -1,0 +1,19 @@
+header:
+  version: 0.1
+  css:
+    component:
+      css/header/navbar.css: {}
+  js:
+    components/header/header.js: {}
+    /libraries/twbs/js/dist/offcanvas.js: {}
+    /libraries/twbs/js/dist/collapse.js: {}
+    /libraries/twbs/js/dist/dropdown.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - alparslan/bs.transitions
+    - alparslan/bs.js.data
+    - alparslan/bs.js.event-handler
+    - alparslan/bs.js.manipulator
+    - alparslan/bs.js.selector-engine
+    - alparslan/bs.js.base-component

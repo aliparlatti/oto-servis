@@ -2,33 +2,285 @@
 
 /**
  * @file
- * Functions to support theming in the SASS Starterkit subtheme.
+ * Theme File.
  */
 
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Serialization\Yaml;
+use Drupal\Component\Serialization\Exception\InvalidDataTypeException;
+use Drupal\Core\Asset\Exception\InvalidLibraryFileException;
+use Drupal\block_content\BlockContentInterface;
+use Drupal\node\NodeInterface;
+use Drupal\block\Entity\Block;
 
 /**
- * Implements hook_form_system_theme_settings_alter() for settings form.
- *
- * Replace Barrio setting options with subtheme ones.
- *
- * Example on how to alter theme settings form
+ * Implements hook_library_info_alter().
  */
-function bootstrap_barrio_subtheme_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
-  $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = [
-    'bg-primary' => t('Primary'),
-    'bg-secondary' => t('Secondary'),
-    'bg-light' => t('Light'),
-    'bg-dark' => t('Dark'),
-    'bg-white' => t('White'),
-    'bg-transparent' => t('Transparent'),
+function alparslan_library_info_alter(&$libraries, $extension) {
+  $themename = 'alparslan';
+  // Alter the library of this theme only.
+  if ($extension == $themename) {
+    $directory_iterator = new RecursiveDirectoryIterator(drupal_get_path('theme', $themename) . '/components/');
+    foreach (new RecursiveIteratorIterator($directory_iterator) as $file) {
+      if ($file->getFilename() == 'libraries.yml') {
+        try {
+          $new_libraries = Yaml::decode(file_get_contents($file->getRealPath()));
+          foreach ($new_libraries as $key => $new_library) {
+            $libraries[$key] = $new_library;
+          }
+        }
+        catch (InvalidDataTypeException $e) {
+          // Rethrow a more helpful exception to provide context.
+          throw new InvalidLibraryFileException(sprintf('Invalid library definition in %s: %s', $file->getRealPath(), $e->getMessage()), 0, $e);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Taxonomy SEO.
+ */
+function alparslan_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  // Cheking view_mode for node.
+  if ($build['#view_mode'] !== 'full' && $entity instanceof NodeInterface) {
+    return;
+  }
+  _remove_header_links($build);
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function alparslan_page_attachments_alter(array &$attachments) {
+  _remove_header_links($attachments);
+}
+
+/**
+ * Remove header links.
+ */
+function _remove_header_links(array &$attachments) {
+  // Cheking html_head_link on attached tags in head.
+  if (!isset($attachments['#attached']['html_head_link'])) {
+    return;
+  }
+  // Array to unset.
+  $unset_html_head_link = [
+    'delete-form',
+    'edit-form',
+    'version-history',
+    'revision',
+    'display',
+    'drupal:content-translation-overview',
+    'drupal:content-translation-add',
+    'drupal:content-translation-edit',
+    'drupal:content-translation-delete',
+    'shortlink',
+    'canonical',
   ];
-  $form['components']['navbar']['bootstrap_barrio_navbar_background']['#options'] = [
-    'bg-primary' => t('Primary'),
-    'bg-secondary' => t('Secondary'),
-    'bg-light' => t('Light'),
-    'bg-dark' => t('Dark'),
-    'bg-white' => t('White'),
-    'bg-transparent' => t('Transparent'),
-  ];
+  // Unset loop.
+  foreach ($attachments['#attached']['html_head_link'] as $key => $value) {
+    if (isset($value[0]['rel']) && in_array($value[0]['rel'], $unset_html_head_link)) {
+      unset($attachments['#attached']['html_head_link'][$key]);
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function alparslan_theme($existing, $type, $theme, $path) {
+  $themename = 'alparslan';
+  $directory_iterator = new RecursiveDirectoryIterator(drupal_get_path('theme', $themename) . '/components/');
+  $dir = new RecursiveIteratorIterator($directory_iterator);
+  if (is_array($dir) || is_object($dir)) {
+    foreach ($dir as $file) {
+      if ($file->getExtension() == 'inc') {
+        try {
+          $new_libraries = $file->getPathname();
+
+          include_once $new_libraries;
+        }
+        catch (InvalidDataTypeException $e) {
+          // Rethrow a more helpful exception to provide context.
+          throw new InvalidLibraryFileException(sprintf('Invalid definition in %s: %s', $file->getRealPath(), $e->getMessage()), 0, $e);
+        }
+      }
+    }
+  }
+  return [];
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function alparslan_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  // Block suggestions for custom block bundles.
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function alparslan_preprocess_block(&$variables) {
+  /* Popup için ilgili alanlar js'e içerik aktarılıyor. */
+  $content = $variables['elements']['content'];
+  if (isset($content['#block_content']) && $content['#block_content'] instanceof BlockContentInterface) {
+    if ($content['#block_content']->bundle() == 'popup') {
+      $variables['#cache']['max-age'] = 0;
+      $block_view = $variables['content'];
+      // Add a JS library.
+      $variables['#attached']['library'][] = 'alparslan/popup';
+      $variables['#attached']['drupalSettings']['alparslan']['alparslanJS']['block_view'] = $block_view;
+    }
+  }
+  // Block iceriklerine block id attribute ile atiliyor.
+  $variables['content']['#attributes']['block_wrapper_id'] = $variables['attributes']['id'];
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function alparslan_theme_suggestions_image_formatter_alter(array &$suggestions, array $variables) {
+  $entity = $variables['item']->getEntity();
+  $field_name = $variables['item']->getParent()->getName();
+  $suggestions[] = 'image_formatter__' . $entity->getEntityTypeId() . '__' . $entity->bundle() . '__' . $field_name;
+
+}
+
+/**
+ * Implements hook_theme_suggestions_form_element_alter().
+ */
+function manager_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
+  if (\Drupal::service('path.current')->getPath() == '/user/login') {
+    $suggestions[] = $variables['theme_hook_original'] . '--user-login';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function alparslan_theme_suggestions_page_alter(&$suggestions, $variables, $hook) {
+  if (!is_null(Drupal::requestStack()->getCurrentRequest()->attributes->get('exception'))) {
+    $status_code = Drupal::requestStack()->getCurrentRequest()->attributes->get('exception')->getStatusCode();
+    switch ($status_code) {
+      case 404:
+        $suggestions[] = 'page__' . (string) $status_code;
+        break;
+
+      default:
+        break;
+    }
+  }
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__' . $content_type;
+  }
+}
+
+/**
+ * Implements tedu_preprocess_html().
+ */
+function alparslan_preprocess_page(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    if ($node->hasField('field_hero_image')) {
+      $field_hero_image = $node->get('field_hero_image')->getValue();
+      if (!empty($field_hero_image)) {
+        $variables['hero_image'] = file_create_url($node->get('field_hero_image')->referencedEntities()[0]->get('field_media_image_1')->referencedEntities()[0]->get('uri')->getString());
+        if (isset($variables['page']['title']) && isset($variables['page']['title']['alparslan_page_title'])) {
+          $variables['page']['title']['alparslan_page_title']['#access'] = FALSE;
+        }
+      }
+    }
+    if ($node->hasField('field_slogan_text')) {
+      $slogan = $node->get('field_slogan_text')->getValue();
+      if (!empty($slogan)) {
+        $variables['slogan_text'] = check_markup($slogan[0]['value'], $slogan[0]['format']);
+      }
+    }
+    if ($node->hasField('field_full_screen')) {
+      $screen = $node->get('field_full_screen')->getValue();
+      if (!empty($screen)) {
+        $variables['full_screen'] = $screen[0]['value'];
+      }
+    }
+
+    if ($node->hasField('field_hero_video')) {
+      $field_hero_video = $node->get('field_hero_video')->getValue();
+      if (!empty($field_hero_video)) {
+        $media = $node->get('field_hero_video')->entity;
+        $variables['hero_video'] = $media->field_media_video_file->view('full');
+        $variables['hero_video_bg'] = $media->field_media_video_thumb->view('full');
+        if (isset($variables['page']['title']) && isset($variables['page']['title']['alparslan_page_title'])) {
+          $variables['page']['title']['alparslan_page_title']['#access'] = FALSE;
+        }
+      }
+    }
+    $variables['title'] = $node->getTitle();
+  }
+}
+
+/**
+ * User Login / Password.
+ */
+function alparslan_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'user_login_form') {
+    $form['actions']['submit']['#attributes']['class'][] = 'btn';
+  }
+  elseif ($form_id == 'user_register_form') {
+    $form['actions']['submit']['#attributes']['class'][] = 'btn';
+  }
+  elseif ($form_id == 'user_pass') {
+    $form['actions']['submit']['#attributes']['class'][] = 'btn';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function alparslan_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
+  if (isset($variables['attributes']['block_wrapper_id'])) {
+    $hook = str_replace(
+      ['block-', '-'],
+      ['', '_'],
+      $variables['attributes']['block_wrapper_id']
+    );
+    $block = Block::load($hook);
+    if ($block instanceof Block) {
+      $region = $block->getRegion();
+      $suggestions[] = $variables['theme_hook_original'] . '__' . $region;
+      $suggestions[] = $variables['theme_hook_original'] . '__' . $region . '__' . $hook;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function alparslan_preprocess(&$variables, $hook) {
+  // Block iceriklerine eklenen block id basilmamak icin siliniyor.
+  if (isset($variables['attributes']) && isset($variables['attributes']['block_wrapper_id'])) {
+    unset($variables['attributes']['block_wrapper_id']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_links().
+ */
+function alparslan_preprocess_links(&$variables) {
+  if (isset($variables['attributes']['block'])) {
+    unset($variables['attributes']['block']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function alparslan_theme_suggestions_paragraph_alter(array &$suggestions, array $variables) {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['elements']['#paragraph'];
+  $parent = $paragraph->getParentEntity();
+  $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $paragraph->id();
 }

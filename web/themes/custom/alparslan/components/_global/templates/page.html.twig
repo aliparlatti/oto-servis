@@ -1,0 +1,30 @@
+{% spaceless %}
+	<div class="layout-container">
+
+		{% include 'themes/custom/alparslan/components/header/templates/header-group.html.twig' %}
+
+		{{ page.title }}
+		{{ page.highlighted }}
+		{{ page.help }}
+
+		<main>
+			<a id="main-content" tabindex="-1"></a>
+			{# link is in html.html.twig #}
+			<div class="layout-content">
+				{{ page.content }}
+			</div>
+		</main>
+
+		{% if page.footer %}
+			<footer class="bg-cream px-5x py-4x mt-40">
+				{{ page.footer }}
+			</footer>
+		{% endif %}
+
+		{% if page.popup %}
+			{{ page.popup }}
+		{% endif %}
+	</div>
+	{# /.layout-container #}
+
+{% endspaceless %}

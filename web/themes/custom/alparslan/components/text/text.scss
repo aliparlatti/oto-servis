@@ -1,0 +1,21 @@
+@import "../../../../../libraries/twbs/scss/functions";
+@import "../_global/global";
+.more-cont{
+    display: none;
+}
+
+.more{
+    margin: 20px 0;
+    color: #0077AF !important;
+    text-align: left !important;
+    padding-left: 28px;
+    font-size: $h6-font-size;
+    font-weight: $nav-tab-font-weight;
+    font-family: $font-blog-link;
+}
+.dot{
+    display: block;
+}
+.is-disable{
+    display: none;
+}

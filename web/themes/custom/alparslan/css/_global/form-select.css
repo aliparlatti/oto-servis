@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "AvenirNext";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Kapra Neue";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Avenir Bold";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-DemiBold.woff) format("woff");
+}
+.form-select {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  -moz-padding-start: calc(0.75rem - 3px);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  appearance: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-select {
+    transition: none;
+  }
+}
+.form-select:focus {
+  border-color: #9aaebf;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(53, 92, 126, 0.25);
+}
+.form-select[multiple], .form-select[size]:not([size="1"]) {
+  padding-right: 0.75rem;
+  background-image: none;
+}
+.form-select:disabled {
+  background-color: #e9ecef;
+}
+.form-select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #212529;
+}
+
+.form-select-sm {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.2rem;
+}
+
+.form-select-lg {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+}
+
+/*# sourceMappingURL=form-select.css.map */

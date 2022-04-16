@@ -1,0 +1,34 @@
+@import "../../../../../libraries/twbs/scss/functions";
+@import "../../../../../libraries/twbs/scss/variables";
+@import "../../../../../libraries/twbs/scss/_mixins";
+@import "../_global/global";
+@import "../../../../../libraries/twbs/scss/vendor/rfs";
+@import "../../../../../libraries/twbs/scss/mixins/border-radius";
+@import "../../../../../libraries/twbs/scss/mixins/transition";
+@import "../../../../../libraries/twbs/scss/_close.scss";
+@import "../../../../../libraries/twbs/scss/mixins/_breakpoints.scss";
+@import "../../../../../libraries/twbs/scss/helpers/ratio";
+@import "../../../../../libraries/twbs/scss/mixins/box-shadow";
+@import "../../../../../libraries/twbs/scss/breadcrumb";
+@import "../../../../../libraries/twbs/scss/card";
+
+
+.splide_list{
+     img{
+          max-width: 250px;
+     }
+}
+.product-gallery{
+     background-color: $slider-bg;
+}
+.title-urun-detay{
+     font-size: $h3-font-size;
+     font-weight: $nav-tab-font-weight;
+}
+.full-breadcrumb{
+     background-color: $slider-bg;
+     line-height: 18px;
+     .breadcrumb{
+          margin-bottom: 0;
+     }
+}

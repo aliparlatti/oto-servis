@@ -1,9 +1,14 @@
-name: Bootstrap Alparslan Tema
+name: alparslan  Theme
 type: theme
-description: 'Basic structure for a Bootstrap Barrio SubTheme.'
-core: 8.x
+description: alparslan  Base Theme
+package: Core
 core_version_requirement: ^8 || ^9
-base theme: bartik
+base theme: stable9
+
+libraries:
+  - alparslan/base
+  - alparslan/bs.utilities
+  - core/normalize
 
 regions:
   branding: Branding

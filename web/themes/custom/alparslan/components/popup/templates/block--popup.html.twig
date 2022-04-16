@@ -1,0 +1,68 @@
+{% spaceless %}
+
+{{ attach_library('alparslan/popup') }}
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+{% if content.field_popup_width[0]['#markup'] %}
+  {% set popup_width = content.field_popup_width[0]['#markup'] %}
+{% else %}
+  {% set popup_width = 400 %}
+{% endif %}
+
+{% if content.field_popup_height[0]['#markup'] %}
+  {% set popup_height = content.field_popup_height[0]['#markup'] %}
+{% else %}
+  {% set popup_height = 300 %}
+{% endif %}
+
+
+<!-- Modal -->
+<div class="modal fade {{ attributes.id }}" id="theme_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:{{ popup_width }}px;">
+    <div class="modal-content" style="min-height:{{popup_height}}px;">
+      {% if label %}
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ label }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      {% endif %}
+      <div class="modal-body{{content.field_popup_without_margin[0]['#markup'] ? " without-margin":""}}">
+        {{ content.field_popup_body[0]}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endspaceless %}

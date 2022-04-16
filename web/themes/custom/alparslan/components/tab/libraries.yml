@@ -1,0 +1,13 @@
+tab:
+  version: 0.1
+  css:
+    component:
+      css/tab/tab.css: {}
+  js:
+    /libraries/twbs/js/dist/tab.js: {}
+  dependencies:
+      - alparslan/bs.js.data
+      - alparslan/bs.js.event-handler
+      - alparslan/bs.js.manipulator
+      - alparslan/bs.js.selector-engine
+      - alparslan/bs.js.base-component

@@ -1,0 +1,9 @@
+urun_detay:
+  version: 0.1
+  css:
+    component:
+      css/urun_detay/urun_detay.css: {}
+  js:
+    components/urun_detay/urun_detay.js: {}
+  dependencies:
+    - alparslan/splide

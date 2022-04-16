@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+
+{{ attach_library('alparslan/bs.breadcrumb') }}
+
+{% if breadcrumb %}
+  <nav role="navigation" style="--bs-breadcrumb-divider: '>';"  aria-labelledby="breadcrumb" class="align-self-center pt-1">
+    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+    <ol class="breadcrumb justify-content-end">
+    {% for item in breadcrumb %}
+      <li class="breadcrumb-item">
+        {% if item.url %}
+          <a href="{{ item.url }}" class="text-white">{{ item.text }}</a>
+        {% else %}
+          {{ item.text }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

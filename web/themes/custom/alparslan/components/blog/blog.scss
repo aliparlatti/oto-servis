@@ -1,0 +1,71 @@
+@import "../../../../../libraries/twbs/scss/functions";
+@import "../_global/global";
+@import "../../../../../libraries/twbs/scss/mixins/breakpoints";
+
+.blog-text,
+.blog-text-r {
+    h4 {
+        line-height: 1;
+        a {
+            color: $headings-color;
+            font-family: $font-blog-link;
+            font-weight: 600;
+        }
+    }
+    .blog-link {
+        color: $link-hover-color;
+        font-family: $font-blog-link;
+        font-size: $h6-font-size;
+    }
+}
+@include media-breakpoint-down(md) {
+    .blog-text-r{
+        margin-top: 20px;
+    }
+}
+
+.alparslan-blog-list{
+    img{
+        &:hover{
+            opacity: 0.6;
+        }
+    }
+    .blog-list-link{
+    font-family: $font-family-base;
+}
+}
+.btn-blog {
+    margin-top: 2em;
+    font-family: $font-family-nav;
+}
+.blog {
+    img {
+         &:hover {
+              opacity: 0.6;
+         }
+    }
+}
+.title-yazar {
+    font-size: $h3-font-size;
+    &:first-child {
+         div {
+              float: left;
+         }
+    }
+}
+.blog-content {
+    p {
+         font-family: $font-blog-link;
+         font-size: 20px;
+         font-weight: $nav-tab-font-weight;
+    }
+    img {
+         max-width: 100%;
+         height: auto;
+         margin-bottom: 10px;
+    }
+}
+.hero-image{
+    background-position:center ;  
+    min-height: 33.33vh;
+}

@@ -1,0 +1,7 @@
+base:
+  version: 1.0.0
+  css:
+    base:
+      css/_global/bootstrap-grid.css: {}
+      css/_global/style.css: {}
+      css/_global/print.css: {}

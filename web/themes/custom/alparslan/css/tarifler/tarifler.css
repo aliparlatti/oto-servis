@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "AvenirNext";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Kapra Neue";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Avenir Bold";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-DemiBold.woff) format("woff");
+}
+.slide-text {
+  padding-top: 0.5rem;
+  text-align: center;
+}
+.slide-text a {
+  font-family: "Kapra Neue", Fallback, sans-serif;
+  color: #333;
+}
+
+.btn-tarif {
+  margin-top: 2em;
+  font-family: "AvenirNext", Fallback, sans-serif;
+}
+
+.splide__pagination {
+  margin-bottom: -25px;
+}
+.splide__pagination .is-active {
+  background-color: #12abe3;
+}
+
+.tarif h5 {
+  font-family: "Kapra Neue", Fallback, sans-serif;
+  color: #333;
+}
+.tarif img:hover {
+  opacity: 0.6;
+}
+
+.title-yazar {
+  font-size: 2rem;
+}
+.title-yazar:first-child div {
+  float: left;
+}
+
+.tarif-content p {
+  font-family: "AvenirNext", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+.tarif-content img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.hero-image {
+  background-position: center;
+  min-height: 33.33vh;
+}
+
+/*# sourceMappingURL=tarifler.css.map */

@@ -1,0 +1,16 @@
+video_paragraph:
+  version: 0.1
+  css:
+    component:
+      css/video_paragraph/video.css: {}
+  js:
+    /libraries/twbs/js/dist/modal.js: {}
+    components/video_paragraph/video.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - alparslan/bs.js.manipulator
+    - alparslan/bs.js.data
+    - alparslan/bs.js.selector-engine
+    - alparslan/bs.js.event-handler
+    - alparslan/bs.js.base-component

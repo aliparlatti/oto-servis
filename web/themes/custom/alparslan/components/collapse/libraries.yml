@@ -1,0 +1,14 @@
+collapse:
+  version: 0.1
+  css:
+    component:
+      css/collapse/accordion.css: {}
+  js:
+    /libraries/twbs/js/dist/collapse.js: {minified: true}
+  dependencies:
+      - alparslan/bs.transitions
+      - alparslan/bs.js.data
+      - alparslan/bs.js.event-handler
+      - alparslan/bs.js.manipulator
+      - alparslan/bs.js.selector-engine
+      - alparslan/bs.js.base-component

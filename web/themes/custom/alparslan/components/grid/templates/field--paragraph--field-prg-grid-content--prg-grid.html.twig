@@ -1,0 +1,168 @@
+{% spaceless %}
+	{#
+	/**
+	 * @file
+	 * Theme override for a field.
+	 *
+	 * To override output, copy the "field.html.twig" from the templates directory
+	 * to your theme's directory and customize it, just like customizing other
+	 * Drupal templates such as page.html.twig or node.html.twig.
+	 *
+	 * Instead of overriding the theming for all fields, you can also just override
+	 * theming for a subset of fields using
+	 * @link themeable Theme hook suggestions. @endlink For example,
+	 * here are some theme hook suggestions that can be used for a field_foo field
+	 * on an article node type:
+	 * - field--node--field-foo--article.html.twig
+	 * - field--node--field-foo.html.twig
+	 * - field--node--article.html.twig
+	 * - field--field-foo.html.twig
+	 * - field--text-with-summary.html.twig
+	 * - field.html.twig
+	 *
+	 * Available variables:
+	 * - attributes: HTML attributes for the containing element.
+	 * - label_hidden: Whether to show the field label or not.
+	 * - title_attributes: HTML attributes for the title.
+	 * - label: The label for the field.
+	 * - multiple: TRUE if a field can contain multiple items.
+	 * - items: List of all the field items. Each item contains:
+	 *   - attributes: List of HTML attributes for each item.
+	 *   - content: The field item's content.
+	 * - entity_type: The entity type to which the field belongs.
+	 * - field_name: The name of the field.
+	 * - field_type: The type of the field.
+	 * - label_display: The display settings for the label.
+	 *
+	 * @see template_preprocess_field()
+	 */
+	#}
+	{%
+  set title_classes = [
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+	{% set row_remove = element['#object'].field_prg_grid_row_remove.0.value %}
+
+	{% set col_class_sm = "col-sm-" %}
+	{% set col_class_md = "col-md-" %}
+	{% set col_class_lg = "col-lg-" %}
+
+	{% set col_data_sm = [] %}
+	{% set col_data_md = [] %}
+	{% set col_data_lg = [] %}
+
+	{% set grid_data_sm = element['#object'].field_prg_grid_grid_size_sm.0.value|split('-') %}
+	{% set grid_data_md = element['#object'].field_prg_grid_grid_size.0.value|split('-') %}
+	{% set grid_data_lg = element['#object'].field_prg_grid_grid_size_lg.0.value|split('-') %}
+	{% set grid_bg_color = element['#object'].field_prg_grid_bg_color.0.value %}
+	{% set grid_data_space = element['#object'].field_add_space_to_row.0.value %}
+	{% set grid_data_row_space = element['#object'].field_add_space_to_row_page.0.value %}
+	{% set grid_reverse = element['#object'].field_blog_reverse.0.value %}
+
+	{% set reverse = (grid_reverse == 1) ? 'flex-column-reverse flex-md-row  flex-lg-row' : '' %}
+	{% set space_class_page = (grid_data_space == 1) ? 'pb-40' : '' %}
+	{% set space_class_row_page = (grid_data_row_space == 1) ? 'mt-40 ' : '' %}
+
+	{% for item in grid_data_sm %}
+		{% set col_data_sm = col_data_sm|merge([ item ]) %}
+	{% endfor %}
+	{% for item in grid_data_md %}
+		{% set col_data_md = col_data_md|merge([ item ]) %}
+	{% endfor %}
+	{% for item in grid_data_lg %}
+		{% set col_data_lg = col_data_lg|merge([ item ]) %}
+	{% endfor %}
+
+	{% if label_hidden %}
+		{% if multiple %}
+			<div{{row_remove=="1"?attributes:attributes.addClass('row').addClass(grid_bg_color).addClass(space_class_page).addClass(space_class_row_page).addClass("g-0").addClass(reverse)}}>
+				{% for key, item in items %}
+
+					{% if col_data_sm|length > 0 %}
+						{% if col_data_sm[key] is defined %}
+							{% set column_class_sm = col_data_sm[key] is not empty ? col_class_sm ~ col_data_sm[key] ~ " " %}
+						{% else %}
+							{% set column = key % col_data_sm|length %}
+							{% set column_class_sm = col_data_sm[column] is not empty ? col_class_sm ~ col_data_sm[column] ~ " " %}
+						{% endif %}
+					{% endif %}
+
+					{% if col_data_md|length > 0 %}
+						{% if col_data_md[key] is defined %}
+							{% set column_class_md = col_data_md[key] is not empty ? col_class_md ~ col_data_md[key] ~ " " %}
+						{% else %}
+							{% set column = key % col_data_md|length %}
+							{% set column_class_md = col_data_md[column] is not empty ? col_class_md ~ col_data_md[column] ~ " " %}
+						{% endif %}
+					{% endif %}
+
+					{% if col_data_lg|length > 0 %}
+						{% if col_data_lg[key] is defined %}
+							{% set column_class_lg = col_data_lg[key] is not empty ? col_class_lg ~ col_data_lg[key] %}
+						{% else %}
+							{% set column = key % col_data_lg|length %}
+							{% set column_class_lg = col_data_lg[column] is not empty ? col_class_lg ~ col_data_lg[column] %}
+						{% endif %}
+					{% endif %}
+
+					{% set column_class = column_class_sm ~ column_class_md ~ column_class_lg %}
+
+					<div{{item.attributes.addClass(column_class)}}>
+						{{ item.content }}
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			{% for item in items %}
+				<div{{attributes}}>{{ item.content }}</div>
+			{% endfor %}
+		{% endif %}
+	{% else %}
+		<div{{row_remove=="1"?attributes:attributes.addClass('row')}}>
+			<div{{title_attributes.addClass(title_classes)}}>{{ label }}</div>
+			{% if multiple %}
+				<div>
+				{% endif %}
+				{% for key, item in items %}
+
+					{% if col_data_sm|length > 0 %}
+						{% if col_data_sm[key] is defined %}
+							{% set column_class_sm = col_data_sm[key] is not empty ? col_class_sm ~ col_data_sm[key] ~ " " %}
+						{% else %}
+							{% set column = key % col_data_sm|length %}
+							{% set column_class_sm = col_data_sm[column] is not empty ? col_class_sm ~ col_data_sm[column] ~ " " %}
+						{% endif %}
+					{% endif %}
+
+					{% if col_data_md|length > 0 %}
+						{% if col_data_md[key] is defined %}
+							{% set column_class_md = col_data_md[key] is not empty ? col_class_md ~ col_data_md[key] ~ " " %}
+						{% else %}
+							{% set column = key % col_data_md|length %}
+							{% set column_class_md = col_data_md[column] is not empty ? col_class_md ~ col_data_md[column] ~ " " %}
+						{% endif %}
+					{% endif %}
+
+					{% if col_data_lg|length > 0 %}
+						{% if col_data_lg[key] is defined %}
+							{% set column_class_lg = col_data_lg[key] is not empty ? col_class_lg ~ col_data_lg[key] %}
+						{% else %}
+							{% set column = key % col_data_lg|length %}
+							{% set column_class_lg = col_data_lg[column] is not empty ? col_class_lg ~ col_data_lg[column] %}
+						{% endif %}
+					{% endif %}
+
+					{% set column_class = column_class_sm ~ column_class_md ~ column_class_lg %}
+
+					<div{{item.attributes.addClass(column_class)}}>
+						{{ item.content }}
+					</div>
+				{% endfor %}
+				{% if multiple %}
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+{% endspaceless %}

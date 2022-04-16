@@ -1,0 +1,43 @@
+{{ attach_library('alparslan/urun_detay') }}
+{{ attach_library('alparslan/bs.buttons') }}
+
+<div{{attributes}}>
+
+	{{ title_prefix }}
+	{% if not page %}
+		<h2{{title_attributes}}>
+			<a href="{{ url }}" rel="bookmark">{{ label }}</a>
+		</h2>
+	{% endif %}
+	{{ title_suffix }}
+
+	<nav aria-label="breadcrumb" class="full-breadcrumb py-3 mb-4">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="{{ url('<front>') }}" rel="home">{{ 'Anasayfa'|t }}</a>
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">{{ label }}</li>
+			</ol>
+		</div>
+	</nav>
+
+</div>
+<div class="container pb-3">
+	<div class="row">
+		<div class="col-lg-7 col-md-7 d-flex align-items-center product-gallery">
+			{{content.field_urun_galeri}}
+		</div>
+		<div class="col-lg-5 col-md-5 p-4 border">
+			<h1 class="title-urun-detay">{{ label }}</h1>
+			{{ content.field_urun_aciklama }}
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 ">
+			{{content|without('field_urun_aciklama', 'field_urun_galeri')}}
+		</div>
+	</div>
+</div>

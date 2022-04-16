@@ -1,0 +1,77 @@
+// global Bootstrap variables loading
+@import "../../../../../libraries/twbs/scss/functions";
+@import "../../../../../libraries/twbs/scss/variables";
+@import "../../../../../libraries/twbs/scss/_mixins";
+@import "../_global/global";
+@import "../../../../../libraries/twbs/scss/vendor/rfs";
+@import "../../../../../libraries/twbs/scss/mixins/border-radius";
+@import "../../../../../libraries/twbs/scss/mixins/transition";
+@import "../../../../../libraries/twbs/scss/_close.scss";
+@import "../../../../../libraries/twbs/scss/mixins/_breakpoints.scss";
+@import "../../../../../libraries/twbs/scss/helpers/ratio";
+@import "../../../../../libraries/twbs/scss/mixins/box-shadow";
+@import "../../../../../libraries/twbs/scss/_modal.scss";
+
+@each $key, $val in $brand-colors {
+    .bg-#{$key} {
+        background-color: #{$val};
+    }
+}
+
+.play {
+    opacity: 0.7;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-repeat: no-repeat;
+        background-size: 3rem;
+        width: 3rem;
+        height: 3rem;
+        transition: 0.3s;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA6FJREFUaEPtWV2PU1UUXeu0QDMDncCgYnBsZ9pBQ4QHP/A3GJ70SUyMD8b48RP0SXHeCA+QiBIThQBGjPKA6BMhoA6gUeODiYztMJkPDTC9OB/tzLS9Z5lbafmYASfc0ztp0vN003vPWnvtvU/P3ucQLT7Y4vajLWClI9iOQDsCIT1w1xS6nE4nkjaeEfWQAR8GuQ5WXaLWWrDDkGutVZchDIk1kjrqtlCMiUjeahuFaVF+4xuyJGHBCtYYTllp1kAlirMwnII0Y6G/KV6ZNtV878jI/FJabxMwvfnx7krcfwuwLwp8jEAspIOcTBfgE7okmM9WV2MHkhN/FBqOqD9M9m7ZQet/CfARJ6xNA9G4rF7YODb8U0BRi8DVdHpTzMZ/BbGpabwugYWrsubJjeNDEzUBhVTfx4B51SVH07HIg90jf75Obd262ivOe4DpbDqpUwJb3NCZ2ECvt3e7bOw3p9gRgdG32+ml+l8SdDQiTqc0pHbRS2UHBLztFDkiMIIDgYDDAl52wclEAppfcr9xAb8YQzzEaz3Zb4zBcy4YksePoTJ4AXMffAiUyy4g/wdDp1hI9/8I6RkXbMmTJxDf9gT8yyOY27MX5VPfuoC9B4a9yMlUJkcw44KpLqCOVflhEKX3BuBfGnIBvwiDQI6FVOYvBMWag3GngBpk1cfC8S9Q2rMX8q47YLkVQhOcTGU9AutdIC8p4Aaw/pnC3L79mD98pCbKxRBUYCGVLQJolMJhgO8loI7r54draVU5ey4MVd0ts0EEqq7K5uUIaKyP02dQfHc37OjYfQsRVG19AZGnUC7/Xwqd++6+PX9zomopFO0iPnQE8J0u4pb/G23iRvb9IEq7m76R9V0AzLMOEhJRlxISzgc78dcAdzoR8PlRVM5fjKyYE+1JFh7t/xTUKy4ERF5OA58EHdn7gt5xISBqjBsNTau3lK3c1Ftta/1jlSBvC6nsQQCvRZ3Dofikj7pH82/cPFpU7BdXjU0ow5YzWbgia55qHC0Gc6719D1Nmq9I9CwHY6W+kTAm6PkHRvM/BzYsOl4vx/03CbtLwBaC8ZUy9LbGMaj7gSEBx1b5iQNd47979fd3veBQNrvGKyNjDR6MCZsldRJcL4MOiB0ILjBk1yEQaRmHCZ4bsAZA1x3ipwDZxm/WzMCoCqgKmhkI06BKtCgJuk6y6BMTwQVH9yoNM5dbWMqZ7Uu+lU6xdgTaEQjpgXYKhXRg6On/Ap5EtnauKTfqAAAAAElFTkSuQmCC");
+    }
+}
+
+.close-icon {
+    margin-right: 50px;
+    &::before {
+        content: "";
+        background-repeat: no-repeat;
+        background-size: 2.5rem;
+        position: absolute;
+        width: 2.5rem;
+        height: 2.5rem;
+        transition: 0.3s;
+        position: absolute;
+        right: -2%;
+        top: -4%;
+        background-color: white;
+        border-radius: 48%;
+        z-index: 1;
+        background-image: url("data:image/png;base64,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");
+    }
+}
+video {
+    width: 100%;
+    height: 100%;
+}
+.video-paragraph {
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+.thumbnail {
+    position: relative;
+    img {
+        width: 100%;
+        height: auto;
+    }
+    :hover .play {
+        opacity: 1;
+    }
+}

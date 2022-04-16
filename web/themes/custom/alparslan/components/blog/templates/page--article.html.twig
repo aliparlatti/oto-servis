@@ -1,0 +1,42 @@
+{{ attach_library('alparslan/blog') }}
+{% spaceless %}
+	<div class="layout-container">
+
+		{% include 'themes/custom/alparslan/components/header/templates/header-group.html.twig' %}
+
+		{{ page.title }}
+		{{ page.highlighted }}
+		{{ page.help }}
+	
+		<div class="hero-image" style="background-image:url({{ file_url(node.field_image.entity.fileuri) }})">
+		
+		</div>
+
+		<main class="container my-5">
+			<a id="main-content" tabindex="-1"></a>
+			{# link is in html.html.twig #}
+			<div class="row">
+				<div class="col-md-9 blog-content">
+					{{ page.content }}
+				</div>
+				<div class="col-md-3">
+					<div class="side-right ps-3 border-1 border-start">
+					{{ page.sidebar }}
+					</div>
+				</div>
+			</div>
+		</main>
+
+		{% if page.footer %}
+			<footer class="bg-cream px-5x py-4x mt-40">
+				{{ page.footer }}
+			</footer>
+		{% endif %}
+
+		{% if page.popup %}
+			{{ page.popup }}
+		{% endif %}
+	</div>
+	{# /.layout-container #}
+
+{% endspaceless %}

@@ -1,0 +1,19 @@
+{{ attach_library('alparslan/video_paragraph') }}
+<div class="thumbnail">
+	<a href="#"  data-bs-toggle="modal" data-bs-target="#videoModalYouTube">
+		<span class="play"></span>
+		{{(content.field_image) }}
+	</a>
+</div>
+<div class="modal fade" id="videoModalYouTube" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content">
+			<a href="#"  class="close-icon" data-bs-dismiss="modal" aria-label="Close"></a>
+			<div class="modal-body p-0">
+				<div class="ratio ratio-16x9">
+					{{(content.field_media_oembed_video )}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

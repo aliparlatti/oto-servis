@@ -1,0 +1,82 @@
+bs.transitions:
+  version: 0.1
+  css:
+    component:
+      css/_global/transitions.css: {}
+
+bs.js.data:
+  version: 0.1
+  js:
+    /libraries/twbs/js/dist/dom/data.js: {}
+
+bs.js.event-handler:
+  version: 0.1
+  js:
+    /libraries/twbs/js/dist/dom/event-handler.js: {}
+
+bs.js.manipulator:
+  version: 0.1
+  js:
+    /libraries/twbs/js/dist/dom/manipulator.js: {}
+
+bs.js.selector-engine:
+  version: 0.1
+  js:
+    /libraries/twbs/js/dist/dom/selector-engine.js: {}
+
+bs.js.base-component:
+  version: 0.1
+  js:
+    /libraries/twbs/js/dist/base-component.js: {}
+
+bs.tables:
+  version: 0.1
+  css:
+    component:
+      css/_global/tables.css: {}
+
+bs.buttons:
+  version: 0.1
+  css:
+    component:
+      css/_global/buttons.css: {}
+
+bs.form-control:
+  version: 0.1
+  css:
+    component:
+      css/_global/form-control.css: {}
+
+bs.form-select:
+  version: 0.1
+  css:
+    component:
+      css/_global/form-select.css: {}
+
+bs.utilities:
+  version: 0.1
+  css:
+    component:
+      css/_global/utilities.css: {}
+
+bs.navbar:
+  version: 0.1
+  css:
+    component:
+      css/header/navbar.css: {}
+  js:
+    /libraries/twbs/js/dist/collapse.js: {}
+    /libraries/twbs/js/dist/dropdown.js: {}
+  dependencies:
+    - alparslan/bs.transitions
+    - alparslan/bs.js.data
+    - alparslan/bs.js.event-handler
+    - alparslan/bs.js.manipulator
+    - alparslan/bs.js.selector-engine
+    - alparslan/bs.js.base-component
+
+bs.breadcrumb:
+  version: 0.1
+  css:
+    component:
+      css/_global/breadcrumb.css: {}

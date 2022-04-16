@@ -1,0 +1,30 @@
+{{ attach_library('alparslan/card') }}
+
+{%
+  set classes = [
+    'paragraph',
+    'card border-0 ',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'prg_id--' ~ paragraph.id(),
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+
+{% set image = file_url(paragraph.field_card_image.entity.uri.value) %}
+{% set image_alt = content.field_card_image['0']['#item'].alt %}
+
+<div{{attributes.addClass(classes)}}>
+	<div class="section-card-bg px-4 py-2">
+		<div class="icon text-center">
+			{% if paragraph.field_card_image is not empty %}
+				<img class="img-fluid" src="{{ image }}" alt="{{ image_alt }}">
+			{% endif %}
+		</div>
+		<div class="card-body">
+
+			<div class="card-text">{{ content.field_card_body }}</div>
+
+		</div>
+	</div>
+</div>

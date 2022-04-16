@@ -1,0 +1,75 @@
+@use "sass:map";
+@import "fonts";
+// New custom variables
+
+// Override Bootstrap Variables
+// -----------
+
+$brand-colors: (
+    "gray": #c6d2d4,
+    "cream": #ece5dd,
+    "yellow": #fbbf24,
+    "light-blue": #23b6e6,
+    "white": #fff,
+    "dark": #333,
+    "sidebar":#e4e9ec
+);
+$border-light: #ececec;
+$font-family-base: "Kapra Neue", Fallback, sans-serif;
+$font-family-nav: "AvenirNext", Fallback, sans-serif;
+$font-blog-link: "AvenirNext", Arial, sans-serif;
+$font-family-nav-link: "Avenir Bold", Fallback, sans-serif;
+
+$body-bg: #fff;
+
+$primary: #355c7e;
+$nav-link-color-custom: #0d6efd;
+$nav-link-hover-color-custom:#007bff;
+$link-color: $primary;
+$link-hover-color: #0077af;
+$link-decoration: none;
+$link-hover-decoration: none;
+$slide-pagination-color:#12abe3;
+$card-bg:#f9f9f9;
+$slider-bg:#e5e9ec;
+
+$display-font-weight: 300;
+$nav-tab-font-weight: 400;
+$nav-tab-font-size: 1.125rem;
+
+$h1-font-size: 4.5rem;
+$h2-font-size: 3.75rem;
+$h3-font-size: 2rem;
+$h4-font-size: 1.3rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;
+
+$font-size-7: 0.875rem;
+$font-size-8: 1rem;
+$font-size-9: 1.15rem;
+$font-size-10: 1.5rem;
+$breadcrumb-font-size:1.25rem;
+
+$font-sizes: (
+    1: $h1-font-size,
+    2: $h2-font-size,
+    3: $h3-font-size,
+    4: $h4-font-size,
+    5: $h5-font-size,
+    6: $h6-font-size,
+    7: $font-size-7,
+    8: $font-size-8,
+    9: $font-size-9,
+    10: $font-size-10,
+);
+$headings-color: #393d40;
+
+$modal-backdrop-bg: #000;
+$modal-backdrop-opacity: 0.5;
+
+$btn-primary: $primary;
+$btn-border-radius: 4px;
+
+// global Bootstrap variables loading
+@import "../../../../../libraries/twbs/scss/functions";
+@import "../../../../../libraries/twbs/scss/variables";

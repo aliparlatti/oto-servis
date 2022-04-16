@@ -1,0 +1,10 @@
+text:
+  version: 0.1
+  css:
+    component:
+      css/text/text.css: {}
+  js:
+    components/text/text.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

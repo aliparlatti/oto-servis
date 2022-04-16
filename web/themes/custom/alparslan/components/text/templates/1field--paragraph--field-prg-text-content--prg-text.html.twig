@@ -1,0 +1,69 @@
+{%
+  set title_classes = [
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+{% set grid_data_font_size = element['#object'].field_font_size_p.0.value %}
+{% set class_font_size = (grid_data_font_size == 1) ? 'font-l' : 'font-s' %}
+
+{% if label_hidden %}
+	{% if multiple %}
+		{% if attributes|length %}
+			<div{{attributes}}>
+			{% endif %}
+			{% for item in items %}
+				{% if item.attributes|length %}
+					<div{{item.attributes}}>
+					{% endif %}
+					{{ item.content }}
+					{% if item.attributes|length %}
+					</div>
+				{% endif %}
+			{% endfor %}
+			{% if attributes|length %}
+			</div>
+		{% endif %}
+	{% else %}
+		{% for item in items %}
+			<div {{attributes.addClass(class_font_size)}}>
+				{{ item.content }}
+			</div>
+			{% set content = item.content|render %}
+			{% set content = content ~ ' ' %}
+
+			{% if 'table' in content %}
+				{{ attach_library('alparslan/bs.tables') }}
+			{% endif %}
+
+			{% if 'btn-' in content %}
+				{{ attach_library('alparslan/bs.buttons') }}
+			{% endif %}
+
+		{% endfor %}
+	{% endif %}
+
+{% else %}
+	{% if attributes|length %}
+		<div>
+		{% endif %}
+		{% if title_attributes.addClass(title_classes)|length > 1 %}
+			<div{{title_attributes.addClass(title_classes)}}>
+			{% endif %}
+			{{ label }}
+			{% if title_attributes.addClass(title_classes)|length %}
+			</div>
+		{% endif %}
+		{% for item in items %}
+			{% if item.attributes|length %}
+				<div{{item.attributes}}>
+				{% endif %}
+				{{ item.content }}
+				{% if item.attributes|length %}
+				</div>
+			{% endif %}
+		{% endfor %}
+
+		{% if attributes|length %}
+		</div>
+	{% endif %}
+{% endif %}

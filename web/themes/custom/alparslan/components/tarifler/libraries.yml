@@ -1,0 +1,9 @@
+tarifler:
+  version: 0.1
+  css:
+    component:
+      css/tarifler/tarifler.css: {}
+  js:
+    components/tarifler/tarifler.js: {}
+  dependencies:
+    - alparslan/splide

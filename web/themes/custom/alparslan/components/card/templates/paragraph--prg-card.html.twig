@@ -1,0 +1,48 @@
+{{ attach_library('alparslan/card') }}
+
+{%
+  set classes = [
+    'paragraph',
+    'card',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'prg_id--' ~ paragraph.id(),
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+
+{% if content.field_card_link[0]['#title'] %}
+  {% set link_title = content.field_card_link[0]['#title'] %}
+{% endif %}
+
+{% if content.field_card_link[0]['#url'] %}
+  {% set link_url = content.field_card_link[0]['#url'] %}
+{% endif %}
+
+{% if paragraph.field_card_title[0].value %}
+  {% set title = paragraph.field_card_title[0].value %}
+{% else %}
+  {% set title = '' %}
+{% endif %}
+
+{% if paragraph.field_card_text[0].value %}
+  {% set text = paragraph.field_card_text[0].value %}
+{% endif %}
+
+{% set image = file_url(paragraph.field_card_image.entity.uri.value) %}
+{% set image_alt = content.field_card_image['0']['#item'].alt %}
+
+<div{{ attributes.addClass(classes) }}>
+  {% if paragraph.field_card_image is not empty %}
+    <img class="img-fluid" src="{{ image }}" alt="{{ image_alt }}">
+  {% endif %}
+  <div class="card-body">
+    <h5 class="card-title">{{ title }}</h5>
+    {% if text %}
+      <p class="card-text">{{ text }}</p>
+    {% endif %}
+    {% if link_title and link_url %}
+      <a href="{{ link_url }}" class="btn btn-primary">{{ link_title }}</a>
+    {% endif %}
+  </div>
+</div>

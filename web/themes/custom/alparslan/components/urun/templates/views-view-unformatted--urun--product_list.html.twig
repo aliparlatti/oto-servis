@@ -1,0 +1,20 @@
+{{ attach_library('alparslan/urun') }}
+{{ attach_library('alparslan/bs.buttons') }}
+
+<div class="row mt-5 justify-content-center">
+{% for row in rows %}
+	{%
+    set row_classes = [
+      default_row_class ? 'col-lg-3 col-md-3 mb-4 d-flex justify-content-center align-items-stretch',
+    ]
+  %}
+
+	<div{{row.attributes.addClass(row_classes)}}>
+		<div class="card list-product">
+			<div class="card-body">
+				{{- row.content -}}
+			</div>
+		</div>
+	</div>
+{% endfor %}
+</div>

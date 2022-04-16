@@ -1,0 +1,42 @@
+@import "../../../../../libraries/twbs/scss/functions";
+@import "../../../../../libraries/twbs/scss/variables";
+@import "../_global/global";
+@import "../../../../../libraries/twbs/scss/mixins/border-radius";
+@import "../../../../../libraries/twbs/scss/mixins/box-shadow";
+@import "../../../../../libraries/twbs/scss/mixins/breakpoints";
+@import "../../../../../libraries/twbs/scss/mixins/image";
+@import "../../../../../libraries/twbs/scss/card";
+
+
+.card {
+     background-color: $card-bg;
+     border: none !important;
+     .card-body{
+          .btn{
+               font-family: $font-family-nav;
+           }
+     }
+     .card-title {
+          margin: 0;
+          margin-bottom: 15px;
+          color: $headings-color;
+          font-size: $font-size-10;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-align: center;
+          a{
+               color: $headings-color;
+           &:hover{
+                color: $headings-color;
+           }    
+          }
+     }
+     .btn-blue{
+          padding: 10px 40px 10px 40px;
+     }
+}
+.home-card{
+     width: 16rem;
+}

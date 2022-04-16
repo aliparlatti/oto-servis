@@ -1,0 +1,58 @@
+@import "../../../../../libraries/twbs/scss/functions";
+@import "../_global/global";
+@import "../../../../../libraries/twbs/scss/mixins/breakpoints";
+
+.slide-text {
+     padding-top: 0.5rem;
+     text-align: center;
+     a {
+          font-family: $font-family-base;
+          color: map-get($brand-colors, dark);
+     }
+}
+.btn-tarif {
+     margin-top: 2em;
+     font-family: $font-family-nav;
+}
+.splide__pagination {
+     margin-bottom: -25px;
+     .is-active {
+          background-color: $slide-pagination-color;
+     }
+}
+.tarif {
+     h5{
+          font-family: "Kapra Neue", Fallback, sans-serif;
+          color: #333;
+     }
+     img {
+          &:hover {
+               opacity: 0.6;
+          }
+     }
+}
+
+.title-yazar {
+     font-size: $h3-font-size;
+     &:first-child {
+          div {
+               float: left;
+          }
+     }
+}
+.tarif-content {
+     p {
+          font-family: $font-blog-link;
+          font-size: 20px;
+          font-weight: $nav-tab-font-weight;
+     }
+     img {
+          max-width: 100%;
+          height: auto;
+          margin-bottom: 10px;
+     }
+}
+.hero-image {
+     background-position: center;
+     min-height: 33.33vh;
+}

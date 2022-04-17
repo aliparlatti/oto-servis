@@ -48,6 +48,7 @@
     not paragraph.isPublished() ? 'paragraph--unpublished'
   ]
 %}
+{{dd(content)}}
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}

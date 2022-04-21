@@ -1,6 +1,23 @@
 @import "../../../../../libraries/twbs/scss/functions";
+@import "../../../../../libraries/twbs/scss/variables";
+@import "../../../../../libraries/twbs/scss/_mixins";
 @import "../_global/global";
 @import "../../../../../libraries/twbs/scss/mixins/breakpoints";
+@import "../../../../../libraries/twbs/scss/breadcrumb";
+
+.blog-image{
+    img{
+        box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+        border-radius: 1rem;
+    }
+}
+.full-breadcrumb{
+    background-color: $slider-bg;
+    line-height: 18px;
+    .breadcrumb{
+         margin-bottom: 0;
+    }
+}
 
 .blog-text,
 .blog-text-r {

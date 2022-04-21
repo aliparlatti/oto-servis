@@ -26,14 +26,14 @@
 {% if hero_image is not empty or hero_video is not empty %}
 	<div class="hero-wrapper">
 		{% if hero_image is not empty and hero_video is empty %}
-			<div {{title_attributes.addClass("lazyload").addClass(full_screen_txt)}}  data-bg="{{ hero_image }}">
+			<div {{title_attributes.addClass("lazyload").addClass(full_screen_txt)}}  data-bg="{{ hero_image }}" style="background-image: url({{ hero_image }});">
 			{% endif %}
 			{% if hero_video is not empty %}
 				<div class="hero-video lazyload" data-bg="{{ hero_video_bg.0 }}">
 					{{ hero_video }}
 				{% endif %}
 				<div class="hero-content container">
-					<h1 class="hero-slogan">{{ slogan_text|raw }}
+					<h1 class="hero-slogan text-uppercase d-none d-lg-block d-md-block">{{ slogan_text|raw }}
 					</h1>
 				</div>
 

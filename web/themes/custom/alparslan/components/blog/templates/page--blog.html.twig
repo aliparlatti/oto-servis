@@ -1,0 +1,39 @@
+{{ attach_library('alparslan/blog') }} {{ attach_library('alparslan/bs.buttons') }}
+{% spaceless %}
+	<div class="layout-container">
+
+		{% include 'themes/custom/alparslan/components/header/templates/header-group.html.twig' %} {{ page.title }} {{ page.highlighted }} {{ page.help }}
+		<nav aria-label="breadcrumb" class="full-breadcrumb py-3 mb-4">
+			<div class="container">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="{{ url('<front>') }}" rel="home">{{ 'Anasayfa'|t }}</a>
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">{{ node.label }}</li>
+				</ol>
+			</div>
+		</nav>
+		<main class="container my-5">
+			<a id="main-content" tabindex="-1"></a>
+			{# link is in html.html.twig #}
+			<div class="row">
+				<div class="col-md-9 blog-content"> {{ page.content }}
+				</div>
+				<div class="col-md-3">
+					<div class="side-right ps-3 border-1 border-start"> {{ page.sidebar }}
+					</div>
+				</div>
+			</div>
+		</main>
+
+		{% if page.footer %}
+			<footer class="bg-cream px-5x py-4x mt-40"> {{ page.footer }}
+			</footer>
+		{% endif %}
+
+		{% if page.popup %} {{ page.popup }}
+		{% endif %}
+	</div>
+	{# /.layout-container #}
+
+{% endspaceless %}

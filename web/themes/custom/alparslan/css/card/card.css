@@ -177,40 +177,6 @@
   }
 }
 
-.section-card-bg {
-  padding-left: 2rem;
-  background-color: #c6d2d4;
-}
-.section-card-bg .card-body {
-  padding: 1rem 0.8rem;
-}
-.section-card-bg h4 {
-  font-size: 1.15rem;
-}
-.section-card-bg .icon {
-  height: 112px;
-  width: 112px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.section-card-bg .card-text {
-  color: #404040;
-  font-family: "AvenirNext", Fallback, sans-serif;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 25px;
-}
-.section-card-bg .card-text p {
-  text-align: center;
-}
-.section-card-bg .card-text h4 {
-  font-weight: 700;
-}
-
 .bg-gray {
   background-color: #c6d2d4;
 }
@@ -237,6 +203,59 @@
 
 .bg-sidebar {
   background-color: #e4e9ec;
+}
+
+@media (min-width: 992px) {
+  .card {
+    height: 100% !important;
+  }
+}
+.card {
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border: none;
+  background-color: #ece5dd;
+}
+.card .img-fluid {
+  padding: 1rem;
+}
+
+.section-card-bg {
+  padding-left: 2rem;
+  background-color: #c6d2d4;
+}
+.section-card-bg .card {
+  margin-left: 15px;
+}
+.section-card-bg .card-body {
+  padding: 1rem 0.8rem;
+}
+.section-card-bg h4 {
+  font-size: 1.15rem;
+}
+.section-card-bg .icon {
+  height: 112px;
+  width: 112px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-card-bg .card-text {
+  color: rgb(64, 64, 64);
+  font-family: "AvenirNext", Fallback, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 25px;
+}
+.section-card-bg .card-text p {
+  text-align: center;
+}
+.section-card-bg .card-text h4 {
+  font-weight: 700;
 }
 
 /*# sourceMappingURL=card.css.map */

@@ -7,7 +7,30 @@
 @import "../../../../../libraries/twbs/scss/mixins/image";
 @import "../../../../../libraries/twbs/scss/card";
 
+@each $key, $val in $brand-colors {
+	.bg-#{$key} {
+		background-color: #{$val};
+	}
+}
+@include media-breakpoint-up(lg){
+.card{
+    height: 100%!important;
+}
+}
+.card{
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border: none;
+    background-color: map-get($brand-colors, cream);
+    .img-fluid{
+        padding: 1rem;
+    }
+}
 .section-card-bg {
+    .card{
+        margin-left: 15px;
+    }
     .card-body{
         padding: 1rem 0.8rem;
     }
@@ -39,9 +62,4 @@
             font-weight:$font-weight-bold;
         }
     }
-}
-@each $key, $val in $brand-colors {
-	.bg-#{$key} {
-		background-color: #{$val};
-	}
 }

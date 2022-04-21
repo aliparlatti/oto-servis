@@ -1,0 +1,16 @@
+{{ attach_library('alparslan/blog') }} {{ attach_library('alparslan/bs.buttons') }}
+<div{{attributes}}>
+	<div class="container">
+		<div class="blog-image d-flex justify-content-center"> {{ content.field_blog_image }}
+		</div>
+		<h1>{{ label }}</h1>
+		<div class="d-lg-flex d-md-inline-block d-sm-inline-block ">
+			<h4 class="mx-1">{{ content.field_blog_tarih }}</h4>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 "> {{content|without('field_blog_yazar', 'field_blog_tarih', 'field_blog_image')}}
+			</div>
+		</div>
+	</div>
+
+</div>

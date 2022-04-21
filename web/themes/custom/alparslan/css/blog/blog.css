@@ -16,6 +16,41 @@
   font-weight: 400;
   src: url(/themes/custom/alparslan/fonts/AvenirNext-DemiBold.woff) format("woff");
 }
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  list-style: none;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+  padding-left: 0.5rem;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  float: left;
+  padding-right: 0.5rem;
+  color: #6c757d;
+  content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
+}
+.breadcrumb-item.active {
+  color: #6c757d;
+}
+
+.blog-image img {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+}
+
+.full-breadcrumb {
+  background-color: #e5e9ec;
+  line-height: 18px;
+}
+.full-breadcrumb .breadcrumb {
+  margin-bottom: 0;
+}
+
 .blog-text h4,
 .blog-text-r h4 {
   line-height: 1;

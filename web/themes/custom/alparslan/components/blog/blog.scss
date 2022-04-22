@@ -40,7 +40,15 @@
         margin-top: 20px;
     }
 }
-
+.blog-list-link {
+  a{
+    color:  $headings-color;
+    text-decoration: none;
+    font-family: $font-blog-link;
+    font-size: $h6-font-size;
+    font-weight:bold;
+  }
+}
 .alparslan-blog-list{
     img{
         &:hover{

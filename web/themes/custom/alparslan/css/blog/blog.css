@@ -73,6 +73,14 @@
     margin-top: 20px;
   }
 }
+.blog-list-link a {
+  color: #393d40;
+  text-decoration: none;
+  font-family: "AvenirNext", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .alparslan-blog-list img:hover {
   opacity: 0.6;
 }

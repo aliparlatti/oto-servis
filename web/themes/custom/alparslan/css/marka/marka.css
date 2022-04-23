@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "AvenirNext";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/AvenirNext-Regular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Kapra Neue";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff) format("woff2"), url(/themes/custom/alparslan/fonts/KapraNeueRegular.woff2) format("woff");
+}
+@font-face {
+  font-family: "Avenir Bold";
+  font-display: auto;
+  font-weight: 400;
+  src: url(/themes/custom/alparslan/fonts/AvenirNext-DemiBold.woff) format("woff");
+}
+.slide-text {
+  font-size: calc(2vw + 1.2rem);
+}
+
+.splide__slide {
+  margin: 0 1rem;
+}
+
+.splide__slide img {
+  border: 2px solid #e4e9ec;
+  border-radius: 5px;
+  padding-left: 6vh;
+  padding-right: 6vh;
+  margin: 1rem;
+  width: calc(5vw + 15rem) !important;
+}
+
+/*# sourceMappingURL=marka.css.map */

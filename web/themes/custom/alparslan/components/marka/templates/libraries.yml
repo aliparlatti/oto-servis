@@ -1,0 +1,9 @@
+marka:
+  version: 0.1
+  css:
+    component:
+      css/marka/marka.css: {}
+  js:
+    components/marka/marka.js: {}
+  dependencies:
+    - alparslan/splide

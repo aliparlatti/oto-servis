@@ -1,0 +1,18 @@
+@import "../../../../../libraries/twbs/scss/functions";
+@import "../_global/global";
+@import "../../../../../libraries/twbs/scss/mixins/breakpoints";
+
+.slide-text {
+      font-size: calc(2vw + 1.2rem);
+}
+.splide__slide {
+     margin:0 1rem;
+ }
+ .splide__slide img {
+   border: 2px solid  map-get($brand-colors, sidebar);
+   border-radius: 5px;
+   padding-left: 6vh;
+   padding-right: 6vh;
+   margin: 1rem;
+   width: calc(5vw + 15rem) !important ;
+ }

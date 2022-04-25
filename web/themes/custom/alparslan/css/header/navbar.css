@@ -987,7 +987,7 @@ header .main-menu-wrap {
 
 .fixed {
   position: sticky;
-  z-index: 2;
+  z-index: 4;
   top: 0;
   left: 0;
   background: #fff;
@@ -1083,7 +1083,7 @@ nav button {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #393d40;
+  color: #355c7e;
 }
 
 .hero-wrapper {
@@ -1116,7 +1116,7 @@ nav button {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .hero-wrapper .hero-slogan {
   color: #fff;
@@ -1129,7 +1129,7 @@ nav button {
 
 @media (max-width: 991.98px) {
   .offcanvas-start {
-    top: 60px;
+    top: 75px;
     width: 100%;
   }
 

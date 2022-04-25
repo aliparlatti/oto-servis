@@ -576,7 +576,7 @@ body p {
 }
 .font-s h2 {
   padding-top: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 1rem;
   padding-left: 28px;
   padding-right: 28px;
   font-family: "Kapra Neue", Fallback, sans-serif;
@@ -585,7 +585,7 @@ body p {
 }
 .font-s h2 strong {
   font-family: "Kapra Neue", Fallback, sans-serif;
-  font-size: 3.75rem;
+  font-size: calc(2vw + 1.5rem);
   font-weight: 400;
 }
 

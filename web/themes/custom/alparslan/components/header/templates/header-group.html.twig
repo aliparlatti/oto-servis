@@ -9,7 +9,10 @@
 <h1 class="slogan">{{ slogan_text }}</h1>
 </div> #}
 {% set full_screen_txt = (full_screen == 1) ? 'hero-image-full' : 'hero-image' %}
-
+<div class="top-nav sticky d-flex align-items-center justify-content-between w-100 d-md-block d-sm-block d-lg-none">
+<a class="header-phone" href="tel:05423073637"><span class="h-phone"></span>İletişim</a>
+<a href="https://www.google.com/maps/place/Yavuz+Selim,+1.+Sanayi+Sk.+No:2,+37300+Tosya%2FKastamonu,+Türkiye/@41.018063,34.076224,18z/data=!4m2!3m1!1s0x408413cac0aa122b:0xd04c18b1a927699a?hl=tr-TR&gl=US"><span class="h-maps"></span> Yol Tarifi</a>
+</div>
 <header class="container-lg sticky d-flex my-lg-2 justify-content-center">
 	{% if page.header %}
 		<div

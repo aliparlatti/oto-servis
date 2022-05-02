@@ -26,6 +26,7 @@
         "drupal/gin": "^3.0@beta",
         "drupal/google_analytics": "^4.0",
         "drupal/iframe": "^2.16",
+        "drupal/imageapi_optimize_webp": "^2.0@beta",
         "drupal/imagemagick": "^3.3",
         "drupal/lazy": "^3.11",
         "drupal/metatag": "^1.19",

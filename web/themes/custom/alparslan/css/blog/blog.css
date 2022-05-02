@@ -39,6 +39,7 @@
 }
 
 .blog-image img {
+  aspect-ratio: 6/4;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   border-radius: 1rem;
 }

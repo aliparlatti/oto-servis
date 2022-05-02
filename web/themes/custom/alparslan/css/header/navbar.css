@@ -1156,6 +1156,7 @@ nav button {
   justify-content: flex-start;
 }
 .hero-wrapper .hero-slogan {
+  margin-top: 1rem;
   color: #fff;
   font-size: 4.5rem;
   line-height: 5rem;

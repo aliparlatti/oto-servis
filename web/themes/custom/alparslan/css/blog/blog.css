@@ -52,28 +52,6 @@
   margin-bottom: 0;
 }
 
-.blog-text h4,
-.blog-text-r h4 {
-  line-height: 1;
-}
-.blog-text h4 a,
-.blog-text-r h4 a {
-  color: #393d40;
-  font-family: "AvenirNext", Arial, sans-serif;
-  font-weight: 600;
-}
-.blog-text .blog-link,
-.blog-text-r .blog-link {
-  color: #0077af;
-  font-family: "AvenirNext", Arial, sans-serif;
-  font-size: 1rem;
-}
-
-@media (max-width: 767.98px) {
-  .blog-text-r {
-    margin-top: 20px;
-  }
-}
 .blog-list-link a {
   color: #393d40;
   text-decoration: none;
@@ -89,20 +67,8 @@
   font-family: "Kapra Neue", Fallback, sans-serif;
 }
 
-.btn-blog {
-  margin-top: 2em;
-  font-family: "AvenirNext", Fallback, sans-serif;
-}
-
 .blog img:hover {
   opacity: 0.6;
-}
-
-.title-yazar {
-  font-size: 2rem;
-}
-.title-yazar:first-child div {
-  float: left;
 }
 
 .blog-content p {

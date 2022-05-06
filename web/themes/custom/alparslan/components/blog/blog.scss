@@ -2,96 +2,65 @@
 @import "../../../../../libraries/twbs/scss/variables";
 @import "../../../../../libraries/twbs/scss/_mixins";
 @import "../_global/global";
-@import "../../../../../libraries/twbs/scss/mixins/breakpoints";
+//@import "../../../../../libraries/twbs/scss/mixins/breakpoints";
 @import "../../../../../libraries/twbs/scss/breadcrumb";
 
-.blog-image{
-    img{
+.blog-image {
+    img {
         aspect-ratio: 6/4;
         box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
         border-radius: 1rem;
     }
 }
-.full-breadcrumb{
+.full-breadcrumb {
     background-color: $slider-bg;
     line-height: 18px;
-    .breadcrumb{
-         margin-bottom: 0;
+    .breadcrumb {
+        margin-bottom: 0;
     }
 }
 
-.blog-text,
-.blog-text-r {
-    h4 {
-        line-height: 1;
-        a {
-            color: $headings-color;
-            font-family: $font-blog-link;
-            font-weight: 600;
-        }
-    }
-    .blog-link {
-        color: $link-hover-color;
+.blog-list-link {
+    a {
+        color: $headings-color;
+        text-decoration: none;
         font-family: $font-blog-link;
         font-size: $h6-font-size;
+        font-weight: bold;
     }
 }
-@include media-breakpoint-down(md) {
-    .blog-text-r{
-        margin-top: 20px;
-    }
-}
-.blog-list-link {
-  a{
-    color:  $headings-color;
-    text-decoration: none;
-    font-family: $font-blog-link;
-    font-size: $h6-font-size;
-    font-weight:bold;
-  }
-}
-.alparslan-blog-list{
-    img{
-        &:hover{
+.alparslan-blog-list {
+    img {
+        &:hover {
             opacity: 0.6;
         }
     }
-    .blog-list-link{
-    font-family: $font-family-base;
+    .blog-list-link {
+        font-family: $font-family-base;
+    }
 }
-}
-.btn-blog {
-    margin-top: 2em;
-    font-family: $font-family-nav;
-}
+
 .blog {
     img {
-         &:hover {
-              opacity: 0.6;
-         }
+        &:hover {
+            opacity: 0.6;
+        }
     }
 }
-.title-yazar {
-    font-size: $h3-font-size;
-    &:first-child {
-         div {
-              float: left;
-         }
-    }
-}
+
 .blog-content {
     p {
-         font-family: $font-blog-link;
-         font-size: 20px;
-         font-weight: $nav-tab-font-weight;
+        font-family: $font-blog-link;
+        font-size: 20px;
+        font-weight: $nav-tab-font-weight;
     }
     img {
-         max-width: 100%;
-         height: auto;
-         margin-bottom: 10px;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
     }
 }
-.hero-image{
-    background-position:center ;  
+.hero-image {
+    background-position: center;
     min-height: 33.33vh;
 }

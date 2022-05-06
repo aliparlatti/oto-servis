@@ -5,8 +5,29 @@
 @import "../../../../../libraries/twbs/scss/mixins/box-shadow";
 @import "../../../../../libraries/twbs/scss/mixins/breakpoints";
 @import "../../../../../libraries/twbs/scss/mixins/image";
-@import "../../../../../libraries/twbs/scss/card";
 
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #f9f9f9;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,0.125);
+    border-radius: 0.25rem;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+}
+
+.card-title {
+    margin-bottom: 0.5rem;
+}
+.card-text:last-child {
+    margin-bottom: 0;
+}
 @each $key, $val in $brand-colors {
 	.bg-#{$key} {
 		background-color: #{$val};
@@ -25,41 +46,5 @@
     background-color: map-get($brand-colors, cream);
     .img-fluid{
         padding: 1rem;
-    }
-}
-.section-card-bg {
-    .card{
-        margin-left: 15px;
-    }
-    .card-body{
-        padding: 1rem 0.8rem;
-    }
-    h4 {
-        font-size: $font-size-9;
-    }
-    padding-left: 2rem;
-    background-color: map-get($brand-colors, "gray");
-    .icon {
-        height: 112px;
-        width: 112px;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .card-text {
-        color: rgb(64, 64, 64);
-        font-family: $font-family-nav;
-        font-size: $font-size-7;
-        line-height: 1.25rem;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-bottom: 25px;
-        p {
-            text-align: center;
-        }
-        h4{
-            font-weight:$font-weight-bold;
-        }
     }
 }

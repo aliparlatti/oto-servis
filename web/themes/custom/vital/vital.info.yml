@@ -1,0 +1,20 @@
+name: vital
+type: theme
+description: alparslan  Base Theme
+package: Core
+core_version_requirement: ^8 || ^9
+base theme: stable9
+
+libraries:
+  - alparslan/base
+  - alparslan/bs.utilities
+  - core/normalize
+
+regions:
+  branding: Branding
+  header: Header
+  title: Title
+  content: Content
+  sidebar: Sidebar
+  footer: Footer
+  popup: Popup

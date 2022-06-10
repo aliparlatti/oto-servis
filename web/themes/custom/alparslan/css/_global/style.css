@@ -547,6 +547,10 @@ body p {
   font-family: "AvenirNext", Fallback, sans-serif;
 }
 
+.visually-hidden {
+  display: none;
+}
+
 .img-fluid {
   max-width: 100%;
   height: auto;
